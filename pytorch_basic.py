@@ -49,5 +49,31 @@ x = torch.linspace(0,10,100)
 y = torch.exp(x)
 
 #cannot plot tensor but does numpy
-plt.plot(x.numpy(),y.numpy())
-plt.show()
+#plt.plot(x.numpy(),y.numpy())
+#plt.show()
+
+t1 =  torch.arange(2,7)
+print(t1)
+t1 = torch.arange(2,7,2)
+print(t1)
+
+
+x = torch.arange(18).view(2,3,3)
+
+#matrix multiplication
+t1 = torch.tensor([0,3,5,5,5,2]).view(2,3)
+t2 = torch.tensor([3,4,3,-2,4,-2]).view(3,2)
+
+print(torch.matmul(t1,t2))
+
+#gradient of a polynomial function
+x = torch.tensor(2.0, requires_grad = True)
+y = 9*x**4 + 2*x**3 + 3*x**2 + 6*x + 1
+y.backward()
+print(x.grad)
+
+x = torch.tensor(1.0, requires_grad = True)
+z = torch.tensor(2.0, requires_grad = True)
+y = x**2 +z**3
+y.backward()
+print(x.grad,z.grad)
